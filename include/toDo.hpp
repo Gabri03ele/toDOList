@@ -10,46 +10,40 @@
 #include <stdlib.h>
 #include <cstdlib>
 
-struct toDo_exception {
+struct toDo_exception
+{
     std::string msg;
 };
 
-
-class toDo {
+class toDo
+{
 public:
-    struct list_iterator;
-    struct const_list_iterator;
-    list_iterator begin_list();
-    const_list_iterator begin_list() const;
-    list_iterator end_list();
-    const_list_iterator end_list() const;
-
     toDo();
-    toDo(toDo const&);
-    toDo(toDo&&);
+    toDo(toDo const &);
+    toDo(toDo &&);
     ~toDo();
 
-    toDo& operator=(toDo const&);
-    toDo& operator=(toDo&&);
+    toDo &operator=(toDo const &);
+    toDo &operator=(toDo &&);
 
     bool is_completed() const;
-    
-    int& get_id();
-    int const& get_id() const;
 
-    std::string& get_string();
-    std::string const& get_string() const;
+    int &get_id();
+    int const &get_id() const;
 
-    void set_string(std::string const&);
+    std::string &get_string();
+    std::string const &get_string() const;
+
+    void set_string(std::string const &);
+    void set_new_string(std::string const &);
     void set_completed();
-    
-    void push_back(toDo const&);
-    
-    bool isEmpty();
+    void clearScreen();
+    void leggiFile(const std::string &filepath);
+    void scriviFile(const std::string &filepath);
 
 private:
     struct impl;
-    impl* pimpl;
+    impl *pimpl;
 };
 
 #endif
